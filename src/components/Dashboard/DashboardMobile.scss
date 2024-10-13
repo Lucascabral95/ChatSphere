@@ -1,0 +1,155 @@
+* a {
+    text-emphasis: none !important;
+}
+
+.dashboard-mobile {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #E9E9E9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    .contenedor-dashboard-mobile {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .dashboard-mobile-secciones {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0;
+
+            .redireccion-dashboard {
+                width: fit-content;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+
+                .interior-dashboard {
+                    width: fit-content;
+                    padding: 12px 16px;
+                    border-radius: 10px;
+
+                    .dashboard-mobile-texto {
+                        font-weight: 600;
+                        font-size: 18px;
+                        color: #4D4D4D;
+                    }
+
+                    &:hover {
+                        transition: 0.2s;
+                        background-color: #E9E9E9;
+                    }
+                }
+
+                .ii {
+                    display: none;
+                    padding: 12px 0;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .dashboard-mobile {
+        .contenedor-dashboard-mobile {
+            .dashboard-mobile-secciones {
+                padding: 0;
+
+                .redireccion-dashboard {
+                    width: 33.33%;
+                    padding: 12px 0;
+
+                    .interior-dashboard {
+                        display: none;
+
+                        .dashboard-mobile-texto {}
+
+                        &:hover {
+                            all: unset;
+                        }
+                    }
+
+                    &:hover {
+                        transition: 0.2s;
+                        background-color: #E9E9E9;
+                    }
+
+                    .ii {
+                        display: flex !important;
+                        justify-content: center;
+                        align-items: center;
+
+                        .dashboard-mobile-iconos {
+                            font-size: 28px;
+                            color: #4D4D4D;
+                        }
+                    }
+
+                    &:hover {
+                        .ii {
+                            .dashboard-mobile-iconos {
+                                color: var(--color-chat);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 479px) {
+    .dashboard-mobile {
+        .contenedor-dashboard-mobile {
+            .dashboard-mobile-secciones {
+                padding: 0;
+
+                .redireccion-dashboard {
+                    width: 33.33%;
+                    padding: 6px 0;
+
+                    .interior-dashboard {
+                        display: none;
+
+                        &:hover {
+                            all: unset;
+                        }
+                    }
+
+                    .ii {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .dashboard-mobile-iconos {
+                            font-size: 24px;
+                            color: #4D4D4D;
+                        }
+                    }
+
+                    &:hover {
+                        transition: 0.2s;
+                        background-color: #E9E9E9;
+        
+                        .ii {
+                            .dashboard-mobile-iconos {
+                                color: var(--color-chat);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .dashboard-mobile {
+        display: none;
+    }
+}

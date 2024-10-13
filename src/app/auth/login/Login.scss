@@ -1,0 +1,305 @@
+.div-login {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    color: black;
+    justify-content: center;
+    align-items: center;
+
+    .datos-de-acceso {
+        max-width: 600px;
+        min-width: 500px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        padding: 30px 20px;
+        backdrop-filter: blur(12px) saturate(120%) contrast(78%) brightness(110%);
+
+        .cont {
+            width: 80%;
+
+            .titulo {
+                h2 {
+                    font-size: 24px;
+                    font-weight: 500;
+                }
+            }
+
+            .subtitulo {
+                margin: 6px 0 20px 0;
+
+                p {
+                    color: #D9D9D9;
+                }
+            }
+
+            .boton-google {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 10px 0;
+                border-radius: 20px;
+                border: 1px solid rgba(0, 0, 0, 0.205);
+                cursor: pointer;
+                margin: 22px 0 16px 0;
+
+                .icon-google {
+                    font-size: 20px;
+                    margin: 0 6px 0 0;
+                }
+
+                p {
+                    font-weight: 600;
+                }
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.100);
+                    transition: 0.2s;
+                }
+            }
+
+            .linea-delimitante {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 12px 0 20px 0;
+
+                .linea {
+                    width: 41%;
+                    height: 0.4px;
+                    background-color: rgba(0, 0, 0, 0.205);
+                    padding: 0 10px;
+                }
+
+                p {
+                    font-weight: bold;
+                    color: black;
+                    font-size: 12.8px;
+                }
+            }
+
+            .formulario-registro {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                .registro-form {
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        font-size: 15px;
+                        font-weight: bold;
+                    }
+
+                    .contenedor-input {
+                        width: calc(100% - 24px);
+                        border-radius: 20px;
+                        border: 1px solid rgba(0, 0, 0, 0.205);
+                        margin: 4px 0 16px 0;
+                        padding: 10px 12px;
+                        color: white;
+
+                        input {
+                            background-color: transparent;
+                            width: 100%;
+                            border: none;
+                            outline: none;
+                            font-weight: 400;
+                            color: white;
+
+                            &::placeholder {
+                                color: white;
+                            }
+                        }
+                    }
+
+                    .detalle-password {
+                        width: 100%;
+                        margin: -12px 0 16px 0;
+
+                        .texto-detalle {
+                            text-align: center;
+                            color: white;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+
+            .texto-de-error {
+                color: red;
+                font-weight: bolder;
+                text-align: center;
+                margin: 2px 0;
+            }
+
+            .boton-finzalizacion {
+                width: 100%;
+                background-color: black;
+                color: white;
+                padding: 10px 0;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 20px;
+                margin: 10px 0 22px 0;
+                border: none;
+
+                p {
+                    font-weight: 600;
+                }
+
+                &:hover {
+                    transition: 0.2s;
+                    background-color: rgba(0, 0, 0, 0.500);
+                }
+            }
+
+            .tenes-cuenta {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+
+                p {
+                    color: #D9D9D9;
+                }
+
+                .ir-al-login {
+                    font-weight: bold;
+                    color: black;
+                    margin: 0 0 0 4px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 479px) {
+    .div-login {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .datos-de-acceso {
+            max-width: auto;
+            min-width: auto;
+            width: 80% !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 9% 6%;
+            // padding: 12px 6px;
+
+            .cont {
+                width: 100%;
+
+                .titulo {
+                    h2 {
+                        font-size: 24px;
+                    }
+                }
+
+                .subtitulo {
+                    margin: 6px 0 20px 0;
+
+                    p {}
+                }
+
+                .boton-google {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    padding: 10px 0;
+                    border-radius: 20px;
+                    margin: 22px 0 16px 0;
+
+                    .icon-google {
+                        font-size: 20px;
+                        margin: 0 6px 0 0;
+                    }
+
+                    p {}
+
+                }
+
+                .linea-delimitante {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 12px 0 20px 0;
+
+                    .linea {
+                        width: 41%;
+                        height: 0.4px;
+                        padding: 0 10px;
+                    }
+
+                    p {
+                        font-size: 12.8px;
+                    }
+                }
+
+                .formulario-registro {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+
+                    .registro-form {
+                        display: flex;
+                        flex-direction: column;
+
+                        label {
+                            font-size: 15px;
+                        }
+
+                        .contenedor-input {
+                            width: calc(100% - 24px);
+                            margin: 4px 0 16px 0;
+                            padding: 10px 12px;
+
+                            input {}
+                        }
+                    }
+                }
+
+                .texto-de-error {
+                    margin: 2px 0;
+                }
+
+                .boton-finzalizacion {
+                    width: 100%;
+                    padding: 10px 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 10px 0 22px 0;
+
+                    p {}
+
+                }
+
+                .tenes-cuenta {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+
+                    p {}
+
+                    .ir-al-login {
+                        margin: 0 0 0 4px;
+                    }
+                }
+            }
+        }
+    }
+}

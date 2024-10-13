@@ -1,0 +1,218 @@
+.dashboard {
+  width: var(--width-secciones);
+  padding: 12px 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #E9E9E9;
+  background-color: #E6D4F1;
+
+  .contenedor-de-dashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .seccion-perfil-secciones {
+      display: flex;
+      flex-direction: column;
+
+      .imagen-perfil {
+        margin: 0 0 10% 0;
+
+        .imagen-profile {}
+
+        .titulo-de-la-app {
+          color: var(--color-secundario-chat);
+          font-weight: bolder;
+          font-family: 'Pacifico', cursive;
+
+          background: linear-gradient(135deg, #5B2E91, #7D5B9D, #9E7BAF, #B9A0C9, #D6C2E7);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      }
+
+      .array-de-amigos {
+        margin: 0 0 min(10%, 12px) 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 8px;
+
+        .friends {
+          cursor: pointer;
+          width: 100%;
+          margin: 0 0 2px 0;
+          padding: 8px 4px 8px 4px;
+          border-radius: 8px;
+
+          .friends-text {
+            color: var(--color-secundario-chat);
+          }
+
+          &:hover {
+            transition: 0.2s;
+            background-color: #FAFAFC;
+
+            .friends-text {
+              transition: 0.2s;
+            }
+          }
+        }
+      }
+
+      .contenedor-sin-amigos {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .img {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .img-sin-amigos {
+            width: 92%;
+            height: auto;
+          }
+
+          .sin-amigos-titulo{
+            margin:  -10% 0 10px 0;
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-secundario-chat);
+          }
+        }
+      }
+
+      .subtitulo-secciones {
+        width: 100%;
+        margin: 0 0 14px 0;
+
+        .subtitulo-secciones-text {
+          font-size: 12.8px;
+          color: black;
+          font-weight: 600;
+        }
+      }
+
+      .subtitulo-selecciones-general {
+        margin: 16px 0 12px 0;
+      }
+
+      .icono {
+        display: flex;
+        align-items: center;
+        margin: 0 0 12px 0;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 8px;
+
+        .cont-icon {
+          width: 28px;
+          height: 28px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          margin: 0 12px 0 0;
+          border: 1px solid var(--color-secundario-chat);
+
+          .icon {
+            font-size: 16px;
+            color: var(--color-secundario-chat);
+          }
+        }
+
+        .text-icon {
+          font-size: 16px;
+          font-weight: 400;
+          color: var(--color-secundario-chat);
+        }
+
+        &:hover {
+          transition: 0.2s;
+          background-color: #FAFAFC;
+
+          .cont-icon {
+            transition: 0.2s;
+            border: 1px solid var(--color-chat);
+
+            .icon {
+              transition: 0.2s;
+              color: var(--color-chat);
+            }
+          }
+
+          .text-icon {
+            color: var(--color-chat);
+          }
+        }
+      }
+    }
+
+    .seccion-logout {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: fit-content;
+
+      .datos {
+        display: flex;
+
+        .imagen-de-perfil {
+          width: 40px;
+
+          .img-logout {}
+        }
+
+        .cuenta-personal {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .text-logout {
+            color: var(--color-chat);
+            font-weight: 600;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .icono-logout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+
+        .icon-logout {
+          font-size: 20px;
+          color: var(--color-secundario-chat);
+        }
+
+        &:hover {
+          transition: 0.2s;
+          background-color: #FAFAFC;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1023px) {
+  .dashboard {
+    display: none;
+
+    .contenedor-de-dashboard {}
+  }
+}
