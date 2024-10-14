@@ -7,7 +7,7 @@ Instalar real-time-chat con npm
 ```bash
   git clone https://github.com/Lucascabral95/ChatSphere.git
   cd real-time-chat
-  npm install real-time-chat
+  npm install 
   npm run dev
 ```
  
