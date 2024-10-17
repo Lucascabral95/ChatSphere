@@ -4,7 +4,7 @@ import DashboardMobile from "@/components/Dashboard/DashboardMobile.jsx"
 import EstructuraSecciones from "@/components/EstructuraSecciones/EstructuraSecciones.jsx"
 import "@/components/EstructuraSecciones/EstructuraSecciones.scss"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import axios from "axios"
 import Image from "next/image"
 import { useSession } from "next-auth/react"
@@ -12,6 +12,7 @@ import Skeleton from "react-loading-skeleton"
 import moment from "moment"
 import 'moment/locale/es';
 import Footer from "@/components/Footer/Footer"
+
 moment.locale('es');
 
 const MyFriends = () => {
@@ -45,12 +46,15 @@ const MyFriends = () => {
         traerAmigos()
     }, [])
 
+    // Memorizar la lista de amigos solo si hay datos
+    const amigosMemo = useMemo(() => {
+        return dataAmigos?.datosAmigos ?? []
+    }, [dataAmigos]);
+
     return (
         <Applicacion>
-            <EstructuraSecciones childrenNotFound={ <Footer />} >
-
+            <EstructuraSecciones childrenNotFound={<Footer />} >
                 <DashboardMobile />
-
                 <div className="add-friends">
 
                     {!sinAmigos &&
@@ -60,8 +64,8 @@ const MyFriends = () => {
                     }
 
                     <div className="contenedor-card-amigos">
-                        {!loading ? (
-                            dataAmigos?.datosAmigos?.map((item, index) => (
+                        {!loading && amigosMemo.length > 0 ? (
+                            amigosMemo.map((item, index) => (
                                 <Link href={`/application/chat/${item.id}`} key={index} className="card-amigos">
                                     <div className="card-imagen">
                                         <Image
@@ -101,19 +105,21 @@ const MyFriends = () => {
                                 </Link>
                             ))
                         ) : (
-                            <div className="skeleton-de-grupo-amigos">
-                                {[...Array(7)].map((_, index) => (
-                                    <div key={index} className="card-amigos-skeleton">
-                                        <div className="card-imagen">
-                                            <Skeleton circle={true} height={40} width={40} />
+                            loading && (
+                                <div className="skeleton-de-grupo-amigos">
+                                    {[...Array(7)].map((_, index) => (
+                                        <div key={index} className="card-amigos-skeleton">
+                                            <div className="card-imagen">
+                                                <Skeleton circle={true} height={40} width={40} />
+                                            </div>
+                                            <div className="card-nombre">
+                                                <Skeleton height={20} className="skeleton-de-nombre" />
+                                                <Skeleton height={17} className="skeleton-de-mensaje" />
+                                            </div>
                                         </div>
-                                        <div className="card-nombre">
-                                            <Skeleton height={20} className="skeleton-de-nombre" />
-                                            <Skeleton height={17} className="skeleton-de-mensaje" />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            )
                         )}
                         {sinAmigos &&
                             <div className="cont-sin-amigos">
