@@ -8,7 +8,7 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { zustand } from "@/zustand";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Skeleton from "react-loading-skeleton";
 
 const Dashboard = () => {
@@ -25,7 +25,6 @@ const Dashboard = () => {
                 setAmigos(res.data.datosAmigos);
                 setLoading(false);
                 setSinAmigo(false);
-
             } catch (error) {
                 if (error.response && error.response.data && error.response.data.error) {
                     setTimeout(() => {
@@ -39,11 +38,12 @@ const Dashboard = () => {
         };
 
         fetchAmigos();
-    }, [ cambiante ]);
+    }, [cambiante]);
+
+    const amigosMemorizados = useMemo(() => amigos, [amigos]);
 
     return (
-        <div
-            className='dashboard' >
+        <div className='dashboard'>
             <div className="contenedor-de-dashboard">
 
                 <div className="seccion-perfil-secciones">
@@ -57,11 +57,13 @@ const Dashboard = () => {
                             <p className="subtitulo-secciones-text"> Mis amigos </p>
                         </div>
                     }
-                    <div className="array-de-amigos" >
+                    <div className="array-de-amigos">
                         {!loading ? (
-                            amigos.map((amigo, index) => (
+                            amigosMemorizados.map((amigo, index) => (
                                 <Link href={`/application/chat/${amigo.id}`} key={index} className="friends">
-                                    <p className="friends-text"> {amigo.email.charAt(0).toUpperCase() + amigo.email.slice(1)} </p>
+                                    <p className="friends-text">
+                                        {amigo.email.charAt(0).toUpperCase() + amigo.email.slice(1)}
+                                    </p>
                                 </Link>
                             ))
                         ) : (
@@ -121,7 +123,7 @@ const Dashboard = () => {
                             <p className="text-logout"> {session?.user?.email} </p>
                         </div>
                     </div>
-                    <div className="icono-logout" onClick={() => signOut()} >
+                    <div className="icono-logout" onClick={() => signOut()}>
                         <MdLogout className="icon-logout" />
                     </div>
                 </footer>

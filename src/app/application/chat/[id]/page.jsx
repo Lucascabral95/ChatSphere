@@ -5,7 +5,7 @@ import "@/components/EstructuraSecciones/EstructuraSecciones.scss"
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { zustand } from '@/zustand'
 import { useSession } from 'next-auth/react'
 import { FiRefreshCw } from "react-icons/fi";
@@ -98,12 +98,24 @@ const ChatDinamico = () => {
         }, 1200);
     }, [conversacion])
 
+    const mensajesTransformados = useMemo(() => {
+        return conversacion.map((mensaje, index) => (
+            <div key={index} className="mess" style={{ justifyContent: mensaje.emisor !== session?.user?.id ? "flex-start" : "flex-end" }}>
+                <div className="mensaje">
+                    <p> {mensaje.mensajes} </p>
+                    <div className="hora-div">
+                        <p className="hora-texto"> {new Intl.DateTimeFormat('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(mensaje.hora))}  </p>
+                    </div>
+                </div>
+            </div>
+        ));
+    }, [conversacion, session?.user?.id]); 
+
     return (
         <Applicacion>
             <EstructuraSecciones>
                 <div className="chat-dinamico">
                     <div className="dit">
-
                         <div className="datos-superiores">
                             <div className="imagen-perfil-nombre">
                                 <div onClick={() => window.history.back()} className="icono-back">
@@ -128,18 +140,8 @@ const ChatDinamico = () => {
                         <div className="contenido-del-chat">
                             <div className="contenido-del-chat">
                                 {!loading
-                                    ? (
-                                        conversacion.map((mensaje, index) => (
-                                            <div key={index} className="mess" style={{ justifyContent: mensaje.emisor !== session?.user?.id ? "flex-start" : "flex-end" }}>
-                                                <div className="mensaje">
-                                                    <p> {mensaje.mensajes} </p>
-                                                    <div className="hora-div">
-                                                        <p className="hora-texto"> {new Intl.DateTimeFormat('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(mensaje.hora))}  </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))
-                                    ) : (
+                                    ? mensajesTransformados 
+                                    : (
                                         <div className='skeleton-de-contenido'>
                                             <div className="imagen-de-espera">
                                                 <Image
@@ -168,7 +170,6 @@ const ChatDinamico = () => {
                             </div>
                         </form>
                     </div>
-
                 </div>
             </EstructuraSecciones>
         </Applicacion>
