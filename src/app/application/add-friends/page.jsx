@@ -159,8 +159,6 @@ const AddFriends = () => {
                       </div>
                     }
 
-
-
                     <Toaster />
 
                 </div>
