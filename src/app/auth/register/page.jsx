@@ -1,11 +1,12 @@
 "use client";
-import StructureLoginRegister from '@/components/StructureLoginRegister/StructureLoginRegister.jsx'
-import "../../auth/login/Login.scss";
-import { useEffect, useState } from 'react';
-import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { FcGoogle } from "react-icons/fc";
+
+import StructureLoginRegister from '@/components/StructureLoginRegister/StructureLoginRegister.jsx'
+import "../../auth/login/Login.scss";
 
 const Login = () => {
     const [name, setName] = useState("");

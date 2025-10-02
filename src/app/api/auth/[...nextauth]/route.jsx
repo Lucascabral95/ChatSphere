@@ -3,7 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import mongo from "@/services/Mongodb";
 import Client from "@/models/Client.jsx";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const handler = NextAuth({
     providers: [
@@ -16,19 +17,19 @@ const handler = NextAuth({
             async authorize(credentials, req) {
                 await mongo();
                 const client = await Client.findOne({ email: credentials.email.toLowerCase() });
-            
+
                 if (!client) {
                     throw new Error("El email o la contraseña son inválidos");
                 }
-            
+
                 const verificacionPassword = await bcrypt.compare(credentials.password, client.password);
                 if (!verificacionPassword) {
                     throw new Error("Contraseña incorrecta");
                 }
-            
+
                 return client;
             }
-            
+
         }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
