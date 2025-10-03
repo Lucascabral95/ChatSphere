@@ -1,0 +1,42 @@
+:root {
+  --color-chat: #6020a0;
+  --color-secundario-chat: #402e58;
+  --color-letra: white;
+  --color-letra-secundaria: #b7b6b9;
+  --width-secciones: 350px;
+  --color-icons: #4d4d4d;
+
+  --padding-chat: 24px;
+  --padding-chat-mobile: min(10%, 8px);
+  --altura-chat: calc(100vh - 4vw);
+
+  --padding-datossuperiores-input-mobile: min(10%, 14px) 12px;
+
+  --color-fondo-chat: #180828;
+  --color-fondo-chat-secundario: #c9a9e9;
+
+  --fondo-dashboard: #e3d5e0;
+  --barra-lateral-dashboard: 1px solid #4b2c63;
+  --texto-dashboard: #ffffff;
+
+  --width-mobile: 1023px;
+}
+
+.application {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  .contenedor-de-application {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+  }
+}
+
+body {
+  ::selection {
+    background-color: var(--color-chat);
+    color: white;
+  }
+}

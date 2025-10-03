@@ -1,4 +1,3 @@
-// @type {import('next').NextConfig}
 const nextConfig = {
   async redirects() {
     return [
@@ -10,11 +9,12 @@ const nextConfig = {
     ];
   },
   images: {
-    domains: ["lh3.googleusercontent.com"],
+    domains: ["lh3.googleusercontent.com", "www.shutterstock.com"],
   },
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: false,
+    // ignoreBuildErrors: true, // Temporal
   },
   eslint: {
     ignoreDuringBuilds: false,

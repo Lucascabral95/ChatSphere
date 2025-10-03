@@ -1,47 +1,144 @@
-# ChatSphere
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="ChatSphere Logo" width="120"/>
+  <h1 align="center">ChatSphere</h1>
+  <p align="center">Chat en tiempo real con autenticación segura y mensajería instantánea</p>
+</p>
 
-## Instalación
+## 🚀 Características Principales
 
-Instalar real-time-chat con npm
+- **Chat en Tiempo Real**: Mensajería instantánea con actualizaciones en vivo
+- **Autenticación Segura**: Inicio de sesión con Google y credenciales propias
+- **Gestión de Contactos**: Busca y agrega amigos fácilmente
+- **Notificaciones en Tiempo Real**: Recibe alertas instantáneas de nuevos mensajes
+- **Diseño Responsivo**: Funciona perfectamente en móviles y escritorios
+- **Persistencia de Datos**: Todos los mensajes se guardan de forma segura
 
-```bash
-  git clone https://github.com/Lucascabral95/ChatSphere.git
-  cd real-time-chat
-  npm install 
-  npm run dev
+## 🛠️ Tecnologías Utilizadas
+
+### Frontend
+
+- Next.js 14 con App Router
+- React 18
+- TypeScript
+- Tailwind CSS
+- Zustand para gestión de estado
+- React Hook Form para formularios
+
+### Backend
+
+- Next.js API Routes
+- MongoDB con Mongoose
+- NextAuth.js y Google OAuth para autenticación
+- Pusher para WebSockets
+- Nodemailer para envío de correos
+
+### Despliegue
+
+- Vercel (Frontend)
+- MongoDB Atlas (Base de datos)
+- Pusher (WebSockets)
+
+## 📦 Instalación
+
+1. **Clonar el repositorio**
+
+   ```bash
+   git clone https://github.com/Lucascabral95/ChatSphere.git
+   cd ChatSphere
+   ```
+
+2. **Instalar dependencias**
+
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
+
+3. **Configuración**
+   Crea un archivo `.env.local` en la raíz del proyecto con las siguientes variables:
+
+   ```env
+   MONGODB_URI=tu_cadena_de_conexion_mongodb
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=tu_secreto_seguro
+   GOOGLE_CLIENT_ID=tu_google_client_id
+   GOOGLE_CLIENT_SECRET=tu_google_client_secret
+   PUSHER_APP_ID=tu_pusher_app_id
+   PUSHER_KEY=tu_pusher_key
+   PUSHER_SECRET=tu_pusher_secret
+   PUSHER_CLUSTER=tu_pusher_cluster
+   NODEMAILER_EMAIL=tu_email_para_envios
+   NODEMAILER_PASSWORD=tu_contraseña_de_aplicacion
+   ```
+
+4. **Ejecutar en desarrollo**
+
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
+
+   La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
+
+## 🏗️ Estructura del Proyecto
+
 ```
- 
-## 🌟 Descripción
+src/
+├── app/                    # Rutas de la aplicación (App Router)
+│   ├── api/               # Endpoints de la API
+│   ├── auth/              # Autenticación
+│   └── application/       # Aplicación principal
+├── components/            # Componentes reutilizables
+├── infraestructure/       # Configuración y servicios
+│   ├── config/
+│   ├── constants/
+│   ├── interfaces/
+│   ├── models/
+│   └── services/
+└── presentation/          # Componentes, hooks y utils
+    ├── components/
+    ├── hooks/
+    └── utils/
+```
 
-Aplicación de chat en tiempo real que permite a los usuarios comunicarse de manera instantánea, con persistencia de estado en MongoDB y actualizaciones en tiempo real mediante Pusher.
+## 🔒 Autenticación
 
-## ⚙️ Características Principales:
+ChatSphere ofrece múltiples métodos de autenticación:
 
-- **Chat en Tiempo Real**: Permite a los usuarios enviar y recibir mensajes instantáneamente, mejorando la experiencia de comunicación.
-- **Persistencia de Estado**: Utiliza MongoDB para almacenar mensajes y datos de usuario, garantizando que la información se conserve entre sesiones.
-- **Actualizaciones Instantáneas**:Implementa Pusher para que los mensajes y notificaciones se actualicen en tiempo real sin necesidad de recargar la página.
-- **Sección para Agregar Amigos**: Los usuarios pueden buscar y agregar amigos que estén registrados en la aplicación, facilitando la creación de redes de comunicación.
-- **Invitación para No Registrados**: Permite invitar a amigos que no están registrados mediante mensajes a través de la app, utilizando Nodemailer para enviar invitaciones por correo.
-- **Autenticación Segura**: Integra NextAuth para el inicio de sesión, soportando tanto autenticación con credenciales como inicio de sesión a través de Google, asegurando la privacidad y seguridad de los usuarios.
+- **Credenciales propias** (email/contraseña)
+- **Google OAuth**
+- Persistencia de sesión segura
+- Protección de rutas privadas
 
-## 📄 Conclusión:
+## 🌐 Despliegue
 
-**ChatSphere**: es una aplicación de chat en tiempo real que combina tecnologías modernas como Next.js, MongoDB y Pusher para ofrecer una experiencia de usuario excepcional. Este proyecto demuestra habilidades en el desarrollo de soluciones escalables y seguras, destacando el compromiso con la innovación y la eficiencia en el ámbito del software.
+### Vercel (Recomendado)
 
-## 🚀 Tecnologías Utilizadas 
+1. Conecta tu repositorio de GitHub a Vercel
+2. Configura las variables de entorno en la configuración del proyecto
+3. ¡Despliega con un clic!
 
-- **Next.js**: Framework de React que permite la construcción de aplicaciones web y APIs con funcionalidades de renderizado del lado del servidor.
-- **MongoDB**: Base de datos NoSQL que almacena los mensajes y datos de usuario de forma persistente.
-- **SASS**: Para estilos y diseño responsivo, asegurando una buena experiencia en diferentes dispositivos.
-- **Pusher**: Servicio que proporciona funcionalidades en tiempo real, permitiendo la comunicación instantánea entre usuarios.
-- **NextAuth.js**: Librería de autenticación que soporta múltiples métodos de inicio de sesión, incluyendo Google.
-- Nodemailer: Módulo para enviar correos electrónicos, utilizado para invitar a amigos que no están registrados.
-- **Upstash/Redis**: Sistema de almacenamiento en memoria que se utiliza para gestionar sesiones y mejorar el rendimiento de la aplicación mediante un acceso rápido a los datos.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FLucascabral95%2FChatSphere)
+
+## 🤝 Contribuciones
+
+¡Las contribuciones son bienvenidas! Por favor, lee la [guía de contribuciones](CONTRIBUTING.md) para más detalles.
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ## 📬 Contacto
 
-Si tenés alguna pregunta o sugerencia, no dudes en contactarme a través de lucassimple@hotmail.com o https://github.com/Lucascabral95
+- **Autor**: Lucas Cabral
+- **Email**: lucassimple@hotmail.com
+- **GitHub**: [@Lucascabral95](https://github.com/Lucascabral95)
+- **LinkedIn**: [Lucas Gastón Cabral](https://www.linkedin.com/in/lucas-gastón-cabral/)
 
-### Notas: 
+---
 
-- Añadí secciones como **Tecnologías Utilizadas**, **Descripción**, **Conclusión**, **Características Principales** y **Contacto** para hacer el README más completo.
+<p align="center">
+  Desarrollado con ❤️ por Lucas Cabral
+</p>
